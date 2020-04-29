@@ -1,0 +1,101 @@
+#include<stdio.h>
+int deposits(int);
+int withdrawal(int);
+int transfer(int);
+int new_balance_amt;
+int main()
+{
+int x,n;
+char customer_name[10];
+int acct_no;
+printf("Enter how much time this process should get repeated for other customer:\n");
+scanf("%d", &n);
+while(n!=0)
+{	
+printf("_______________Welcome To Bank Management System_______________\n");
+printf("Enter the customer name:\n");
+scanf("%s", &customer_name);
+printf("Enter the account number:\n");
+scanf("%d", &acct_no);
+printf("Enter your choice:\n1. Deposit\n2. Withdrawal\n3. Transfer\n");
+scanf("%d", &x);
+switch(x)
+{
+case 1:
+int c;
+printf("Deposit amount:\n");
+deposits(c);
+break;
+case 2:
+int d;
+printf("Withdrawal amount:\n");
+withdrawal(d);
+break;
+case 3:
+int e;
+printf("Transfer the amount:\n");
+transfer(e);
+break;
+default:
+printf("You have chosen the invalid choice.\n");
+
+}
+}
+return 0;
+}
+int deposits(int amt)
+{
+int total_amt;
+printf("The total amount existed in this account:\n");
+scanf("%d", &total_amt);
+printf("Amount to be deposited:\n");
+scanf("%d", &amt);
+printf("The balance amount after depositing the amount:\n");
+new_balance_amt=total_amt+amt;
+printf("The upgraded amount by %d and %d is %d\n", total_amt,amt,new_balance_amt);
+return amt;
+}
+int withdrawal(int amt1)
+{
+int required_amt;
+printf("Enter the balance amount:\n");
+scanf("%d", &amt1);
+if(amt1>1000)
+{
+printf("Enter the required amount:\n");
+scanf("%d", &required_amt);
+new_balance_amt=amt1-required_amt;
+printf("The withdrawal amount is %d", required_amt);
+printf("The upgraded amount after withdrawing is %d\n", new_balance_amt);
+return required_amt;
+}
+else
+{
+printf("Your balance is not sufficient for withdrawal.");
+return 0;
+}
+}
+int transfer(int transac_amt)
+{
+char customer_name1[10];
+int acct_no1;
+char customer_name2[10];
+int acct_no2;
+int amt2;
+printf("Enter the customer_name1:\n");
+scanf("%s", &customer_name1);
+printf("Enter the account number1:\n");
+scanf("%d", &acct_no1);
+printf("Enter the customer_name2:\n");
+scanf("%s", &customer_name2);
+printf("Enter the account number2:\n");
+scanf("%d", &acct_no2);
+printf("Amount to be transferred:\n");
+scanf("%d", &transac_amt);
+printf("The amount transferred from %s to %s is %d\n", customer_name1,customer_name2,transac_amt);
+printf("The total amount present before transaction for the first customer:\n");
+scanf("%d", &amt2);
+new_balance_amt=amt2-transac_amt;
+printf("The balance amount after transaction is %d\n", new_balance_amt);
+return transac_amt;	
+}
